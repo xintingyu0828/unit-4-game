@@ -1,0 +1,170 @@
+<title>
+    CrystalCollector!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+<script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+<script src="assets/javascript/game.js "></script>
+</body>
+
+</head>
+</head>
+
+<body>
+    <!--Rules Start-->
+
+    <h1 id="title">CrystalCollector!</h1>
+    <div class="container">
+        <div class="row" id="rules">
+            <div class="col-sm-9">
+                <h2 id="instructions">Instructions</h2>
+
+                <p>You will be given a random number at the start of the game. </p>
+
+                <p>There are four crystals below.By clicking on a crystal you will add a specific amount of points to your total score. </p>
+
+                <p>You win the game by matching yout total score to sandom number, you lose the game if your total score goes above the random number.</p>
+
+                <p>The value of each crystal is hidden from you until click on it.</p>
+
+                <p>Each time when te game starts, the game will change the values of each crystal.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--pictures layout -->
+
+    <div class="back">
+        <div class="col-md-8">
+            <img class="cry-img" id="Cry1" img style="display: inline; margin: 0 5px;" src="assets/images/crystal1.jpeg" alt="Cry1">
+            <img class="cry-img" id="Cry2" img style="display: inline; margin: 0 5px;" src="assets/images/crystal2.jpeg" alt="Cry2">
+            <img class="cry-img" id="Cry3" img style="display: inline; margin: 0 5px;" src="assets/images/crystal3.jpeg" alt="Cry3">
+            <img class="cry-img" id="Cry4" img style="display: inline; margin: 0 5px;" src="assets/images/crystal4.jpeg" alt="Cry4">
+
+
+            <div id="target-back">
+                <p id="numGuess">Number to Guess:<br><br> <span id="targetNumber"></span></p>
+            </div>
+
+            <div id="counter-back">
+                <p id="wins">Wins: <span id="winCounter"></span></p>
+                <p id="losses">Losses: <span id="lossCounter"></span></p>
+            </div>
+
+        </div>
+        <div id="score">
+            <p id="score-txt">Your total score is:</p>
+        </div>
+
+        <div id="score-back">
+            <div id="curScore"></div>
+        </div>
+
+
+        <!--java script-->
+        <script>
+            var winCounter = 0;
+            var lossCounter = 0;
+            var targetNumber = Math.floor(Math.random() * 101) + 19;
+            $("#targetNumber").text(targetNumber);
+
+
+
+            var Cry1 = Math.floor(Math.random() * 11) + 1;
+            var Cry2 = Math.floor(Math.random() * 11) + 1;
+            var Cry3 = Math.floor(Math.random() * 11) + 1;
+            var Cry4 = Math.floor(Math.random() * 11) + 1;
+
+
+            $("#winCounter").html(winCounter);
+            $("#lossCounter").html(lossCounter);
+
+            var counter = 0;
+            $("#curScore").text(counter);
+
+            function restartGame() {
+
+                targetNumber = Math.floor(Math.random() * 101) + 19;
+                $("#targetNumber").text(targetNumber);
+                Cry1 = Math.floor(Math.random() * 11) + 1;
+                Cry2 = Math.floor(Math.random() * 11) + 1;
+                Cry3 = Math.floor(Math.random() * 11) + 1;
+                Cry4 = Math.floor(Math.random() * 11) + 1;
+                counter = 0;
+                $("#curScore").text(counter);
+
+            }
+
+            function win() {
+
+                alert("You win!");
+                winCounter++;
+                $("#winCounter").text(winCounter);
+                restartGame();
+            }
+
+            function lose() {
+
+                alert("You lose!");
+                lossCounter++;
+                $("#lossCounter").text(lossCounter);
+                restartGame();
+            }
+
+            $('#Cry1').on('click', function() {
+                counter = counter + Cry1;
+
+                $('#curScore').text(counter);
+
+                if (counter == targetNumber) {
+                    win();
+                } else if (counter > targetNumber) {
+                    lose();
+                }
+            });
+
+            $('#Cry2').on('click', function() {
+                counter = counter + Cry2;
+
+                $('#curScore').text(counter);
+
+                if (counter == targetNumber) {
+                    win();
+                } else if (counter > targetNumber) {
+                    lose();
+                }
+            });
+
+            $('#Cry3').on('click', function() {
+                counter = counter + Cry3;
+
+                $('#curScore').text(counter);
+
+                if (counter == targetNumber) {
+                    win();
+                } else if (counter > targetNumber) {
+                    lose();
+                }
+            });
+
+            $('#Cry4').on('click', function() {
+                counter = counter + Cry4;
+
+                $('#curScore').text(counter);
+
+                if (counter == targetNumber) {
+                    win();
+                } else if (counter > targetNumber) {
+                    lose();
+                }
+            });
+        </script>
+</body>
+
+
+
+</html>
